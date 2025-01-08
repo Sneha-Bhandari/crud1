@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import {Routes, Route } from 'react-router-dom'
+import {Router, Routes, Route } from 'react-router-dom'
 import Postmethod from './Files/Postmethod'
 import Getmethod from './Files/Getmethod'
 import Table from './Files/Table'
+// import Deletetable from './Files/Deletetable'
 
 import './App.css'
 
@@ -11,13 +12,15 @@ function App() {
 
   return (
     <>
+   
     <Routes>
       <Route path='/' element={<Postmethod/>}></Route>
       <Route path='/Getmethod' element={<Getmethod/>}></Route>
       <Route path='/Table' element={<Table/>}></Route>
-
+      {/* <Route path='/Deletetable' element={<Deletetable/>}></Route> */}
 
     </Routes>
+   
     </>
   )
 }

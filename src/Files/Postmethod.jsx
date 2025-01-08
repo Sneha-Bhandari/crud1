@@ -7,8 +7,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 
 
-function First() {
-  
+function Postmethod() {
+
     const Forms = [
         {
           name: "firstName",
@@ -144,4 +144,4 @@ function First() {
   )
 }
 
-export default First
+export default Postmethod
