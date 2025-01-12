@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as yup from "yup"
-import { toast, ToastContainer } from 'react-toastify'
+// import { toast, ToastContainer } from 'react-toastify'
 import axios from 'axios';
 
-const Formho = () => {
-    const[open , setOpen]=useState(false)
+const Formho = ({setEdit}) => {
+  
 
     const details = [
         {
@@ -47,15 +47,21 @@ const Formho = () => {
     })
 
     return (
-        <div className={'fixed  bg-black h-screen flex justify-center items-center w-screen bg-opacity-30 z-10 left-0'}>
-            <div className='w-6/12' >
-                <ToastContainer />
+        <div onClick={()=>setEdit(false)} className={'fixed  bg-black h-screen flex justify-center items-center w-screen bg-opacity-30 z-10 left-0'}>
+            <div className='w-6/12'onClick={(e)=> e.stopPropagation()} >
+           
                 <Formik initialValues={{ firstName: "", middleName: "", lastName: "", collegeName: "", email: "", phone: "", subject: "" }}
                     validationSchema={schemas}
                     onSubmit={(values) => {
                         console.log(values)
                         alert("submitted successfully!!")
-                        
+                        //patch
+                        // axios.patch("http://localhost:3000/person", values).then(result=>{
+                        //     console.log(result)
+                        // })
+                        // .catch((error)=>{
+                        //     console.log(error)
+                        // })
     
                     }}>
                     <Form className='w-full'>
@@ -69,11 +75,11 @@ const Formho = () => {
                                     {
                                         details.map((val, i) => {
                                             return (
-                                                <div key={i} className='flex flex-col w-full gap-2'>
-                                                    <div className='font-semibold text-gray-800 uppercase'>
-                                                        {val.name}:
+                                                <div key={i} className='flex flex-col w-full gap-1'>
+                                                    <div className='font-semibold text-gray-500  text-transform: capitalize tracking-tight '>
+                                                        {val.name}
                                                     </div>
-                                                    <Field className=" p-2 w-full " name={val.name} type={val.type} placeholder={val.placeholder}
+                                                    <Field className=" p-2 w-full rounded-sm" name={val.name} type={val.type} placeholder={val.placeholder}
                                                     ></Field>
                                                     <ErrorMessage name={val.name} component={"div"} className='text-red-600'></ErrorMessage>
                                                 </div>
@@ -82,8 +88,8 @@ const Formho = () => {
                                     }
                                 </div>
                                 <div className='flex flex-row gap-2 justify-between'>
-                                    <button className="text-2xl bg-green-950 text-white w-fit h-fit p-2 rounded-lg shadow-lg " type="submit" onClick={()=>setOpen(false) }>Submit</button>
-                                    <button className="text-2xl bg-green-950 text-white w-fit h-fit p-2 rounded-lg shadow-lg"  onClick={()=>{setOpen(false)} }>Cancel</button>
+                                    <button className="text-xl bg-green-600 text-white w-fit h-fit p-2 rounded-lg shadow-lg " type="submit" onClick={()=>onSubmit() }>Submit</button>
+                                    <button className="text-xl bg-red-700 text-white w-fit h-fit p-2 rounded-lg shadow-lg"  onClick={()=>{setEdit(false)} }>Cancel</button>
                                 </div>
 
                             </div>
