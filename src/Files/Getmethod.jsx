@@ -39,6 +39,10 @@ const Getmethod = () => {
     setDeletes(null)
     getPerson()
   }
+  const editpop=()=>{
+    setEdit(false)
+    getPerson()
+  }
 
   
   return (
@@ -47,7 +51,7 @@ const Getmethod = () => {
         {edit && (
           <div className=" ">
             <div className="h-screen bg-green-400 w-fit">
-              <Formho setEdit={()=>{setEdit(!edit)}}/>
+              <Formho id={edit} setEdit={()=>editpop()}/>
              </div>
            </div>
         )}
@@ -92,12 +96,12 @@ const Getmethod = () => {
                 <td className="px-4 border border-black">{table.phone}</td>
                 <td className="px-4 border border-black">{table.subject}</td>
                 <td className="px-4 border border-black">
-                  {table.Action}
+                  {/* {table.Action} */}
                   <td className="gap-3 flex">
                     <button
                       type="submit"
                       className="border border-black p-2 bg-green-300"
-                      onClick={() => setEdit(true)}
+                      onClick={() => setEdit(table.id)}
                     >
                       Edit
                     </button>

@@ -17,7 +17,7 @@ function App() {
       <Route path='/' element={<Postmethod/>}></Route>
       <Route path='/Getmethod' element={<Getmethod/>}></Route>
       <Route path='/Table' element={<Table/>}></Route>
-      <Route path='/Postmethod' element={<Postmethod/>}></Route>
+      {/* <Route path='/Postmethod' element={<Postmethod/>}></Route> */}
       
       {/* <Route path='/Deletetable' element={<Deletetable/>}></Route> */}
 
